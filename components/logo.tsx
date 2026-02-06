@@ -3,9 +3,9 @@ import Image from "next/image";
 export default function Logo() {
   return (
     <Image
-      src='/glowlogo.png'
+      src='/insight-logo.png'
       alt="Insightsoftware Logo"
-      width={110} height={80}
+      width={250} height={250}
     />
   )
 }
