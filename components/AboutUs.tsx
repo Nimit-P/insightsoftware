@@ -1,10 +1,10 @@
 
-import { Cloud, Shield, ArrowRight ,Truck, Building2, Heart } from 'lucide-react';
+import { Cloud, Shield, ArrowRight, Truck, Building2, Heart } from 'lucide-react';
 import PageCarrerSection from './PageCarrerSection';
 import Footer from './Footer';
 import { Button } from './ui/button';
 import Link from 'next/link';
-import Team from './team';
+// import Team from './team';
 
 const AboutUS = () => {
   const industries = [
@@ -48,11 +48,11 @@ const AboutUS = () => {
                 Our customer-centric approach and experience in adopting and transforming modernization programs for enterprises makes us one of the pioneers in the technology modernization sector!
               </p>
               <Link href='/contact'>
-                   <Button className='mt-6 text-base md:text-lg' size={'lg'}>Get In Touch</Button>
+                <Button className='mt-6 text-base md:text-lg' size={'lg'}>Get In Touch</Button>
               </Link>
             </div>
             <div className="relative flex justify-center">
-             
+
               <div className="relative col-span-1">
 
                 <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg transform rotate-12">
@@ -61,7 +61,7 @@ const AboutUS = () => {
                   </div>
                   <div className="w-36 h-2 bg-white/20 rounded-full mx-auto mt-2"></div>
                 </div>
-                
+
 
                 <div className="absolute -left-16 top-8 bg-white/10 backdrop-blur-sm p-3 rounded-lg transform -rotate-12">
                   <div className="w-12 h-20 bg-gradient-to-br from-purple-400 to-purple-600 rounded-md flex flex-col justify-between p-2">
@@ -75,7 +75,7 @@ const AboutUS = () => {
                   </div>
                 </div>
 
-                
+
                 <div className="absolute -top-8 -right-8">
                   <Cloud className="h-16 w-16 text-white/30" />
                 </div>
@@ -95,56 +95,56 @@ const AboutUS = () => {
         </div>
       </section>
 
-  
+
       <section className="py-5 relative bottom-20 space-y-18">
         <div className="max-w-8xl w-[90%] mx-auto px-4 sm:px-6 lg:px-8 " id='introduction'>
           <div className="bg-white rounded-2xl shadow-2xl p-3 px-5 md:p-10 md:px-15 lg:p-18 lg:px-20">
-          <div className="prose max-w-none">
-            <div className='flex justify-start md:justify-center items-center'>
-              <h1 className="text-[#343a40] text-2xl md:text-3xl lg:text-4xl font-semibold  md:text-center tracking-normal leading-relaxed mb-2">
-                Exceptional Services. Outstanding Performance!
-              </h1>
-            </div>
-            <div>
+            <div className="prose max-w-none">
+              <div className='flex justify-start md:justify-center items-center'>
+                <h1 className="text-[#343a40] text-2xl md:text-3xl lg:text-4xl font-semibold  md:text-center tracking-normal leading-relaxed mb-2">
+                  Exceptional Services. Outstanding Performance!
+                </h1>
+              </div>
+              <div>
                 <p className='flex justify-start md:justify-center items-center prose md:text-center text-[#343a40]'>
                   Our talented workforce always strives to deliver superior and excellent technical solutions through a customer-centric approach! With rich experience in technology development, we are always committed to offer complete satisfaction to our clients. We also provide customized solutions according to the requirement of the clients!
                 </p>
-            </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="max-w-8xl w-[90%] mx-auto px-4 sm:px-6 lg:px-8" id='team'>
+        {/* <div className="max-w-8xl w-[90%] mx-auto px-4 sm:px-6 lg:px-8" id='team'>
           <div className="bg-white rounded-2xl shadow-2xl p-3 px-5 md:p-10 md:px-15 lg:p-18 lg:px-20">
-          <div className="prose max-w-none">
-            <div>
-                  <Team/>
-            </div>
+            <div className="prose max-w-none">
+              <div>
+                <Team/>
+              </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="max-w-8xl w-[90%] mx-auto px-4 sm:px-6 lg:px-8 " id='vision'>
           <div className="bg-white rounded-2xl shadow-2xl p-3 px-5 md:p-10 md:px-15 lg:p-18 lg:px-20">
-          <div className="prose max-w-none">
-            <div className='flex justify-start md:justify-center items-center'>
-              <h1 className="text-[#343a40] text-2xl md:text-3xl lg:text-4xl font-semibold  md:text-center tracking-normal leading-relaxed mb-2">
-                Our Vision
-              </h1>
-            </div>
-            <div>
+            <div className="prose max-w-none">
+              <div className='flex justify-start md:justify-center items-center'>
+                <h1 className="text-[#343a40] text-2xl md:text-3xl lg:text-4xl font-semibold  md:text-center tracking-normal leading-relaxed mb-2">
+                  Our Vision
+                </h1>
+              </div>
+              <div>
                 <p className='flex justify-start md:justify-center items-center prose md:text-center text-[#343a40]'>
                   We envision a world where technology is accessible to all and void of any barriers. We have a vision of creating a community of intelligent like-minded individuals who will empower numerous stakeholders in various industries to adopt latest technological innovations!
                 </p>
-            </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      
-        <div className="max-w-8xl w-[90%] mx-auto px-4 sm:px-6 lg:px-8 mb-10" id='vision'>
-          <div className="bg-white rounded-2xl shadow-2xl p-3 px-5 md:p-10 md:px-15 lg:p-18 lg:px-20">
+
+      <div className="max-w-8xl w-[90%] mx-auto px-4 sm:px-6 lg:px-8 mb-10" id='vision'>
+        <div className="bg-white rounded-2xl shadow-2xl p-3 px-5 md:p-10 md:px-15 lg:p-18 lg:px-20">
           <div className="prose max-w-none">
             <div className='flex justify-center items-center mb-4 md:mb-0'>
               <h1 className="text-[#343a40] text-2xl md:text-3xl lg:text-4xl font-semibold  md:text-center tracking-normal leading-relaxed mb-2">
@@ -152,36 +152,36 @@ const AboutUS = () => {
               </h1>
             </div>
             <div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
-            {industries.map((industry) => {
-              const IconComponent = industry.icon;
-              return (
-                <div key={industry.id} className="text-center">
-                  {/* Icon Circle */}
-                  <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <IconComponent className="h-8 w-8 text-[#154fa1]"/>
-                  </div>
-                  
-                  {/* Industry Title */}
-                  <h3 className="text-xl lg:text-xl text-gray-900 mb-4">
-                    {industry.title}
-                  </h3>
-                  
-                  {/* Industry Description */}
-                  <p className="text-[#343a40] text-base leading-relaxed max-w-md mx-auto">
-                    {industry.description}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-            </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+                {industries.map((industry) => {
+                  const IconComponent = industry.icon;
+                  return (
+                    <div key={industry.id} className="text-center">
+                      {/* Icon Circle */}
+                      <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <IconComponent className="h-8 w-8 text-[#154fa1]" />
+                      </div>
+
+                      {/* Industry Title */}
+                      <h3 className="text-xl lg:text-xl text-gray-900 mb-4">
+                        {industry.title}
+                      </h3>
+
+                      {/* Industry Description */}
+                      <p className="text-[#343a40] text-base leading-relaxed max-w-md mx-auto">
+                        {industry.description}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
-     
-        <PageCarrerSection/>
-        <Footer/>
+      </div>
+
+      <PageCarrerSection />
+      <Footer />
     </div>
   );
 };
