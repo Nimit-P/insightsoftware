@@ -41,7 +41,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-3">
             <div className="mb-6">
-              <h3 className="text-2xl font-bold mb-4">Insightsoftware</h3>
+              <h3 className="text-2xl font-bold mb-4">Insight Software</h3>
               <p className="text-primary-foreground/80 leading-relaxed mb-6">
                 Innovating through people, process, and technology. We empower organizations
                 to modernize their digital infrastructure and build solutions that drive real business value.
@@ -52,18 +52,18 @@ const Footer = () => {
             <div className="space-y-3 mb-6 ">
               <div className="flex items-center text-primary-foreground/80">
                 <Phone className="h-4 w-4 mr-3" />
-                <span>(555) 123-4567</span>
+                <span>+1 978-885-2439</span>
               </div>
               <div className="flex items-center text-primary-foreground/80">
                 <Mail className="h-4 w-4 mr-3" />
-                <span>info@insightsoftware.com</span>
+                <span>info@insightsoftware.digital</span>
               </div>
               <div className="flex items-start text-primary-foreground/80">
                 <MapPin className="w-10 mr-3 " />
                 <span>Global Headquarters
-                  Corporate Center, 1600 Golf Road, Suite 1200, Rolling Meadow, IL 60008
+                  Corporate Center: 1600 Golf Road, Suite 1200, Rolling Meadow, IL 60008
                   India Headquarters
-                  Corporate Annexe, 8th Floor, #802, Sonawala Lane, Goregoan East, Mumbai 400063</span>
+                  Corporate Annexe: 8th Floor, #802, Sonawala Lane, Goregoan East, Mumbai 400063</span>
               </div>
             </div>
 
