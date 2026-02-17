@@ -61,7 +61,7 @@ const Footer = () => {
               <div className="flex items-start text-primary-foreground/80">
                 <MapPin className="w-10 mr-3 " />
                 <span>Global Headquarters
-                  Corporate Center: 1601 Bond St #205 Naperville, IL 60563
+                  Corporate Center: 1601 Bond St #205 Naperville, IL 60563<br></br>
                   Corporate Annexe: 8th Floor, #802, Sonawala Lane, Goregoan East, Mumbai 400063</span>
               </div>
             </div>
