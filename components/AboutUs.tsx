@@ -1,10 +1,12 @@
+"use client";
 
 import { Cloud, Shield, ArrowRight, Truck, Building2, Heart } from 'lucide-react';
-import PageCarrerSection from './PageCarrerSection';
-import Footer from './Footer';
-import { Button } from './ui/button';
+import PageCarrerSection from './PageCarrerSection'; // Retaining existing component
+import Footer from '@/components/Footer'; // Updated to use the new Footer
+import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-// import Team from './team';
+import { motion } from 'framer-motion';
+import { GlassCard } from '@/components/ui/glass-card';
 
 const AboutUS = () => {
   const industries = [
@@ -12,173 +14,157 @@ const AboutUS = () => {
       id: 1,
       icon: Truck,
       title: "Transportation & Logistics",
-      description: "Cost-efficient solutions for great operational efficiency!"
+      description: "Cost-efficient solutions for great operational efficiency!",
+      gradient: "from-blue-500 to-cyan-500"
     },
     {
       id: 2,
       icon: Building2,
       title: "Financial Services",
-      description: "Better data management and advanced scalability"
+      description: "Better data management and advanced scalability",
+      gradient: "from-purple-500 to-pink-500"
     },
     {
       id: 3,
       icon: Heart,
       title: "Healthcare",
-      description: "Integrating health with technology!"
+      description: "Integrating health with technology!",
+      gradient: "from-emerald-500 to-teal-500"
     },
     {
       id: 4,
       icon: Shield,
       title: "Public sector",
-      description: "Accommodate community needs through better operability!"
+      description: "Accommodate community needs through better operability!",
+      gradient: "from-orange-500 to-amber-500"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 mt-18">
+    <div className="min-h-screen bg-background overflow-x-hidden pt-16">
 
-      <section className="bg-[#753a88] text-white py-40">
-        <div className="max-w-8xl w-[90%] mx-auto px-4 sm:px-6 lg:px-8  p-2" >
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
-            <div className='col-span-2'>
-              <h1 className="text-4xl lg:text-6xl font-medium mb-6">
-                Connectors of Innovation and Technology!
+      {/* Hero Section */}
+      <section className="relative py-20 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-primary/5 -skew-y-2 transform origin-top-left scale-110"></div>
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-purple-500/10 rounded-full blur-3xl"></div>
+
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+                Connectors of <span className="text-gradient">Innovation</span> and Technology!
               </h1>
-              <p className="text-base text-purple-100 leading-relaxed">
+              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
                 Our customer-centric approach and experience in adopting and transforming modernization programs for enterprises makes us one of the pioneers in the technology modernization sector!
               </p>
-              <Link href='/contact'>
-                <Button className='mt-6 text-base md:text-lg' size={'lg'}>Get In Touch</Button>
-              </Link>
-            </div>
-            <div className="relative flex justify-center">
+              <Button size="lg" variant="glow" asChild>
+                <Link href='/contact'>Get In Touch</Link>
+              </Button>
+            </motion.div>
 
-              <div className="relative col-span-1">
-
-                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg transform rotate-12">
-                  <div className="w-32 h-20 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center">
-                    <div className="text-white text-xs">Cloud Platform</div>
-                  </div>
-                  <div className="w-36 h-2 bg-white/20 rounded-full mx-auto mt-2"></div>
-                </div>
-
-
-                <div className="absolute -left-16 top-8 bg-white/10 backdrop-blur-sm p-3 rounded-lg transform -rotate-12">
-                  <div className="w-12 h-20 bg-gradient-to-br from-purple-400 to-purple-600 rounded-md flex flex-col justify-between p-2">
-                    <div className="w-full h-1 bg-white/30 rounded"></div>
-                    <div className="space-y-1">
-                      <div className="w-full h-1 bg-white/50 rounded"></div>
-                      <div className="w-3/4 h-1 bg-white/50 rounded"></div>
-                      <div className="w-1/2 h-1 bg-white/50 rounded"></div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative flex justify-center"
+            >
+              <GlassCard className="p-8 relative transform rotate-3 hover:rotate-0 transition-all duration-500 bg-white/5 border-white/10">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
+                      <Cloud className="text-blue-500 w-6 h-6" />
                     </div>
-                    <div className="w-6 h-1 bg-white/30 rounded mx-auto"></div>
+                    <div>
+                      <div className="font-bold text-lg">Cloud Native</div>
+                      <div className="text-xs text-muted-foreground">Scalable Infrastructure</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center">
+                      <Shield className="text-purple-500 w-6 h-6" />
+                    </div>
+                    <div>
+                      <div className="font-bold text-lg">Secure by Design</div>
+                      <div className="text-xs text-muted-foreground">Enterprise Grade Security</div>
+                    </div>
                   </div>
                 </div>
-
-
-                <div className="absolute -top-8 -right-8">
-                  <Cloud className="h-16 w-16 text-white/30" />
-                </div>
-                <div className="absolute -bottom-4 -left-8">
-                  <Cloud className="h-12 w-12 text-white/20" />
-                </div>
-
-                <div className="absolute top-12 -right-12">
-                  <div className="flex items-center space-x-2 text-white/60">
-                    <div className="w-8 h-0.5 bg-white/60"></div>
-                    <ArrowRight className="h-4 w-4" />
-                  </div>
-                </div>
-              </div>
-            </div>
+              </GlassCard>
+            </motion.div>
           </div>
         </div>
       </section>
 
+      {/* Introduction & Vision */}
+      <section className="py-20 bg-accent/5">
+        <div className="container mx-auto px-4 md:px-6 space-y-12">
 
-      <section className="py-5 relative bottom-20 space-y-18">
-        <div className="max-w-8xl w-[90%] mx-auto px-4 sm:px-6 lg:px-8 " id='introduction'>
-          <div className="bg-white rounded-2xl shadow-2xl p-3 px-5 md:p-10 md:px-15 lg:p-18 lg:px-20">
-            <div className="prose max-w-none">
-              <div className='flex justify-start md:justify-center items-center'>
-                <h1 className="text-[#343a40] text-2xl md:text-3xl lg:text-4xl font-semibold  md:text-center tracking-normal leading-relaxed mb-2">
-                  Exceptional Services. Outstanding Performance!
-                </h1>
-              </div>
-              <div>
-                <p className='flex justify-start md:justify-center items-center prose md:text-center text-[#343a40]'>
-                  Our talented workforce always strives to deliver superior and excellent technical solutions through a customer-centric approach! With rich experience in technology development, we are always committed to offer complete satisfaction to our clients. We also provide customized solutions according to the requirement of the clients!
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <GlassCard className="p-8 md:p-12">
+              <h2 className="text-3xl font-bold mb-6 text-center">Exceptional Services. <span className="text-gradient">Outstanding Performance!</span></h2>
+              <p className="text-center text-muted-foreground max-w-3xl mx-auto leading-relaxed text-lg">
+                Our talented workforce always strives to deliver superior and excellent technical solutions through a customer-centric approach! With rich experience in technology development, we are always committed to offer complete satisfaction to our clients. We also provide customized solutions according to the requirement of the clients!
+              </p>
+            </GlassCard>
+          </motion.div>
 
-        {/* <div className="max-w-8xl w-[90%] mx-auto px-4 sm:px-6 lg:px-8" id='team'>
-          <div className="bg-white rounded-2xl shadow-2xl p-3 px-5 md:p-10 md:px-15 lg:p-18 lg:px-20">
-            <div className="prose max-w-none">
-              <div>
-                <Team/>
-              </div>
-            </div>
-          </div>
-        </div> */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <GlassCard className="p-8 md:p-12 border-primary/20 bg-primary/5">
+              <h2 className="text-3xl font-bold mb-6 text-center">Our Vision</h2>
+              <p className="text-center text-muted-foreground max-w-3xl mx-auto leading-relaxed text-lg">
+                We envision a world where technology is accessible to all and void of any barriers. We have a vision of creating a community of intelligent like-minded individuals who will empower numerous stakeholders in various industries to adopt latest technological innovations!
+              </p>
+            </GlassCard>
+          </motion.div>
 
-        <div className="max-w-8xl w-[90%] mx-auto px-4 sm:px-6 lg:px-8 " id='vision'>
-          <div className="bg-white rounded-2xl shadow-2xl p-3 px-5 md:p-10 md:px-15 lg:p-18 lg:px-20">
-            <div className="prose max-w-none">
-              <div className='flex justify-start md:justify-center items-center'>
-                <h1 className="text-[#343a40] text-2xl md:text-3xl lg:text-4xl font-semibold  md:text-center tracking-normal leading-relaxed mb-2">
-                  Our Vision
-                </h1>
-              </div>
-              <div>
-                <p className='flex justify-start md:justify-center items-center prose md:text-center text-[#343a40]'>
-                  We envision a world where technology is accessible to all and void of any barriers. We have a vision of creating a community of intelligent like-minded individuals who will empower numerous stakeholders in various industries to adopt latest technological innovations!
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
+      {/* Clients Industries */}
+      <section className="py-20 relative">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">Industries We Serve</h2>
+            <div className="h-1 w-20 bg-primary mx-auto rounded-full"></div>
+          </div>
 
-      <div className="max-w-8xl w-[90%] mx-auto px-4 sm:px-6 lg:px-8 mb-10" id='vision'>
-        <div className="bg-white rounded-2xl shadow-2xl p-3 px-5 md:p-10 md:px-15 lg:p-18 lg:px-20">
-          <div className="prose max-w-none">
-            <div className='flex justify-center items-center mb-4 md:mb-0'>
-              <h1 className="text-[#343a40] text-2xl md:text-3xl lg:text-4xl font-semibold  md:text-center tracking-normal leading-relaxed mb-2">
-                Clients Industries
-              </h1>
-            </div>
-            <div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
-                {industries.map((industry) => {
-                  const IconComponent = industry.icon;
-                  return (
-                    <div key={industry.id} className="text-center">
-                      {/* Icon Circle */}
-                      <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <IconComponent className="h-8 w-8 text-[#154fa1]" />
-                      </div>
-
-                      {/* Industry Title */}
-                      <h3 className="text-xl lg:text-xl text-gray-900 mb-4">
-                        {industry.title}
-                      </h3>
-
-                      {/* Industry Description */}
-                      <p className="text-[#343a40] text-base leading-relaxed max-w-md mx-auto">
-                        {industry.description}
-                      </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {industries.map((industry, index) => (
+              <motion.div
+                key={industry.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <GlassCard className="h-full text-center hover:border-primary/50 transition-colors group">
+                  <div className={`w-16 h-16 mx-auto rounded-full bg-gradient-to-br ${industry.gradient} p-0.5 mb-6 group-hover:scale-110 transition-transform`}>
+                    <div className="w-full h-full bg-background rounded-full flex items-center justify-center">
+                      <industry.icon className="w-8 h-8 text-foreground" />
                     </div>
-                  );
-                })}
-              </div>
-            </div>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{industry.title}</h3>
+                  <p className="text-sm text-muted-foreground">{industry.description}</p>
+                </GlassCard>
+              </motion.div>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
 
       <PageCarrerSection />
       <Footer />

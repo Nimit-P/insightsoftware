@@ -1,219 +1,248 @@
+"use client";
+
 import React from 'react';
-import { Cloud, Database, Laptop, Users, ChevronDown } from 'lucide-react';
-import Footer from './Footer';
-import Image from 'next/image';
-import PageCarrerSection from './PageCarrerSection';
+import { Cloud, Database, Laptop, Users, ArrowRight, Activity, Server, Code } from 'lucide-react';
+import Footer from '@/components/Footer';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { GlassCard } from '@/components/ui/glass-card';
+import { motion } from 'framer-motion';
 
 const Services = () => {
   return (
-    <div className="min-h-screen bg-gray-50 mt-18">
+    <div className="min-h-screen bg-background pt-16 overflow-hidden">
 
-      <section className="bg-[#154fa1] text-white py-30">
-        <div className="max-w-8xl w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Services Hero */}
+      <section className="relative py-20 lg:py-32">
+        <div className="absolute inset-0 bg-primary/5 -skew-y-1 transform origin-top-right scale-110"></div>
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-4xl lg:text-5xl tracking-wide mb-6">
-                Qualified Development<br />
-                Resources. At a Click!
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+                Qualified Development <br />
+                <span className="text-gradient">Resources.</span> At a Click!
               </h1>
-              <p className="text-base mb-8 ">
-                Developing innovative and revolutionary business solutions is our passion! From data modernization to IT staffing, you can depend on Strong Point for the most valued solutions.
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                Developing innovative and revolutionary business solutions is our passion! From data modernization to IT staffing, you can depend on Insightsoftware for the most valued solutions.
               </p>
-              <Link
-               href='/contact'>
-                <button className="bg-white text-[#154fa1] px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                    Get in touch
-                </button>
-              </Link>
-            </div>
-            <div className="relative">
-              <div className="bg-white/10 p-8 rounded-2xl backdrop-blur-sm">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-blue-500/30 p-4 rounded-lg">
-                    <Database className="h-8 w-8 mb-2" />
-                    <div className="text-sm">Data Solutions</div>
+              <Button size="lg" variant="glow" asChild>
+                <Link href='/contact'>Get in touch</Link>
+              </Button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative"
+            >
+              <GlassCard className="p-8 backdrop-blur-md bg-white/5 border-white/10">
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 hover:bg-blue-500/20 transition-colors">
+                    <Database className="h-8 w-8 mb-3 text-blue-500" />
+                    <div className="font-semibold text-foreground">Data Solutions</div>
                   </div>
-                  <div className="bg-purple-500/30 p-4 rounded-lg">
-                    <Cloud className="h-8 w-8 mb-2" />
-                    <div className="text-sm">Cloud Services</div>
+                  <div className="bg-purple-500/10 p-4 rounded-xl border border-purple-500/20 hover:bg-purple-500/20 transition-colors">
+                    <Cloud className="h-8 w-8 mb-3 text-purple-500" />
+                    <div className="font-semibold text-foreground">Cloud Services</div>
                   </div>
-                  <div className="bg-green-500/30 p-4 rounded-lg">
-                    <Laptop className="h-8 w-8 mb-2" />
-                    <div className="text-sm">Development</div>
+                  <div className="bg-green-500/10 p-4 rounded-xl border border-green-500/20 hover:bg-green-500/20 transition-colors">
+                    <Laptop className="h-8 w-8 mb-3 text-green-500" />
+                    <div className="font-semibold text-foreground">Development</div>
                   </div>
-                  <div className="bg-orange-500/30 p-4 rounded-lg">
-                    <Users className="h-8 w-8 mb-2" />
-                    <div className="text-sm">Consulting</div>
+                  <div className="bg-orange-500/10 p-4 rounded-xl border border-orange-500/20 hover:bg-orange-500/20 transition-colors">
+                    <Users className="h-8 w-8 mb-3 text-orange-500" />
+                    <div className="font-semibold text-foreground">Consulting</div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </GlassCard>
+            </motion.div>
           </div>
         </div>
       </section>
 
+      {/* Detailed Services Sections */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-24">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 pb-0 mb-0 space-y-15 relative bottom-32 ">
-        
-
-        <section className="bg-white rounded-2xl shadow-2xl p-8 py-20 lg:p-12 lg:py-25">
+        {/* Data Asset Modernization */}
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl md:text-6xl font-medium text-[#343a40] mb-6">Data Asset Modernization</h2>
-              <p className="text-gray-700 mb-8 leading-relaxed">
-                We help organizations modernize their data infrastructure and analytics capabilities. 
-                Our expert consultants implement secure, scalable, and effectively managed data assets 
-                while ensuring accessibility to stakeholders. We ensure democratization of data to create 
-                a trusted, secure, and effectively managed data asset while potentially available to the right 
-                people at the right time.
+            <div className="space-y-6">
+              <div className="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                <Database className="w-6 h-6 text-blue-500" />
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold">Data Asset Modernization</h2>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                We help organizations modernize their data infrastructure and analytics capabilities.
+                Our expert consultants implement secure, scalable, and effectively managed data assets, ensuring democratization of data to create
+                a trusted resource available to the right people at the right time.
               </p>
-            <Link
-            href='/data-asset-modernization'>
-              <button className="bg-[#154fa1] text-white px-3 py-1 md:px-6 md:py-3 rounded-lg font-light md:font-medium text-lg md:text-xl md:tracking-wide transition-colors">
-                Learn more
-              </button>
-            </Link>
+              <Button variant="outline" className="group" asChild>
+                <Link href='/data-asset-modernization'>
+                  Learn more <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
             </div>
             <div className="relative">
-              <div className="bg-gradient-to-br from-blue-50 to-indigo-100 p-8 rounded-2xl">
+              <GlassCard className="p-8 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 border-blue-500/10">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white p-4 rounded-lg shadow-sm">
-                    <Database className="h-12 w-12 text-blue-600 mb-2" />
-                    <div className="text-sm font-medium">Data Lakes</div>
+                  <div className="p-4 rounded-lg bg-background/50 border border-white/5">
+                    <Activity className="w-8 h-8 text-blue-500 mb-2" />
+                    <div className="font-bold">Analytics</div>
                   </div>
-                  <div className="bg-white p-4 rounded-lg shadow-sm">
-                    <div className="h-12 w-12 bg-orange-500 rounded mb-2"></div>
-                    <div className="text-sm font-medium">Analytics</div>
+                  <div className="p-4 rounded-lg bg-background/50 border border-white/5">
+                    <Database className="w-8 h-8 text-indigo-500 mb-2" />
+                    <div className="font-bold">Warehousing</div>
                   </div>
                 </div>
-                <div className="mt-4 bg-white p-4 rounded-lg shadow-sm">
-                  <div className="h-8 w-full bg-gray-200 rounded"></div>
+                <div className="mt-4 p-4 rounded-lg bg-background/50 border border-white/5">
+                  <div className="h-2 w-full bg-blue-500/20 rounded-full mb-2 overflow-hidden">
+                    <div className="h-full w-3/4 bg-blue-500 rounded-full"></div>
+                  </div>
+                  <div className="text-xs text-muted-foreground">Data Processing Efficiency</div>
                 </div>
-              </div>
+              </GlassCard>
             </div>
           </div>
-        </section>
+        </motion.section>
 
-
-        <section className="bg-white rounded-2xl shadow-2xl p-8 py-20 lg:p-12 lg:py-25">
+        {/* Cloud Migration */}
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="lg:order-2">
-              <h2 className="text-4xl md:text-6xl font-medium text-[#343a40] mb-6">Cloud Migration</h2>
-              <p className="text-gray-700 mb-8 leading-relaxed">
-                Migration to the cloud has become a key enabler for companies looking to achieve digital 
-                transformations. We collaborate with you, understand your requirements, and create the 
+            <div className="lg:order-2 space-y-6">
+              <div className="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                <Cloud className="w-6 h-6 text-purple-500" />
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold">Cloud Migration</h2>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Migration to the cloud has become a key enabler for companies looking to achieve digital
+                transformations. We collaborate with you, understand your requirements, and create the
                 perfect cloud strategy by leveraging our rich experience with latest technologies.
               </p>
-            <Link
-            href='/cloud-migration'>
-              <button className="bg-[#154fa1] text-white px-3 py-1 md:px-6 md:py-3 rounded-lg font-light md:font-medium text-lg md:text-xl md:tracking-wide transition-colors">
-                Learn more
-              </button>
-            </Link>
+              <Button variant="outline" className="group" asChild>
+                <Link href='/cloud-migration'>
+                  Learn more <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
             </div>
             <div className="lg:order-1 relative">
-              <div className="bg-gradient-to-br from-purple-50 to-blue-100 p-8 rounded-2xl">
-                <div className="flex items-center justify-center">
-                  <div className="relative">
-                    <div className="w-32 h-24 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center transform rotate-12">
-                      <Cloud className="h-12 w-12 text-white" />
-                    </div>
-                    <div className="absolute -bottom-4 -right-4 w-20 h-16 bg-white rounded-lg shadow-lg flex items-center justify-center">
-                      <Laptop className="h-8 w-8 text-gray-600" />
-                    </div>
-                  </div>
+              <GlassCard className="p-8 bg-gradient-to-br from-purple-500/5 to-pink-500/5 border-purple-500/10 flex justify-center items-center py-20">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-purple-500 blur-2xl opacity-20 animate-pulse"></div>
+                  <Cloud className="w-32 h-32 text-purple-500 relative z-10" />
                 </div>
-              </div>
+              </GlassCard>
             </div>
           </div>
-        </section>
+        </motion.section>
 
-        <section className="bg-white rounded-2xl shadow-2xl p-8 py-20 lg:p-12 lg:py-25">
+        {/* Application Modernization */}
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl md:text-6xl font-medium text-[#343a40] mb-6">Application Modernization</h2>
-              <p className="text-gray-700 mb-8 leading-relaxed">
-                Migrate your applications to a cloud and standards-based infrastructure with minimal 
-                disruption and conflict as our team will assist you in reducing capital spends 
-                for cloud strategic and manage governance advanced through enhanced modernization 
-                technology.
+            <div className="space-y-6">
+              <div className="w-12 h-12 rounded-lg bg-green-500/20 flex items-center justify-center">
+                <Laptop className="w-6 h-6 text-green-500" />
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold">Application Modernization</h2>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Migrate your applications to a cloud and standards-based infrastructure with minimal
+                disruption. Our team will assist you in reducing capital spends
+                for cloud strategy and managing governance through enhanced modernization technology.
               </p>
-            <Link
-            href='/application-modernization'>
-             <button className="bg-[#154fa1] text-white px-3 py-1 md:px-6 md:py-3 rounded-lg font-light md:font-medium text-lg md:text-xl md:tracking-wide transition-colors">
-              Learn more
-              </button>
-            </Link>
+              <Button variant="outline" className="group" asChild>
+                <Link href='/application-modernization'>
+                  Learn more <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
             </div>
             <div className="relative">
-              <div className="bg-gradient-to-br from-green-50 to-blue-100 p-8 rounded-2xl">
+              <GlassCard className="p-8 bg-gradient-to-br from-green-500/5 to-emerald-500/5 border-green-500/10">
                 <div className="space-y-4">
-                  <div className="bg-white p-4 rounded-lg shadow-sm flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-blue-500 rounded flex items-center justify-center">
-                      <Laptop className="h-6 w-6 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="h-3 bg-gray-200 rounded mb-2"></div>
-                      <div className="h-3 bg-gray-200 rounded w-2/3"></div>
+                  <div className="flex items-center gap-4 p-4 rounded-lg bg-background/50 border border-white/5">
+                    <Server className="w-6 h-6 text-green-500" />
+                    <div className="flex-1 h-2 bg-green-500/20 rounded-full overflow-hidden">
+                      <div className="h-full w-2/3 bg-green-500 rounded-full animate-[loading_2s_ease-in-out_infinite]"></div>
                     </div>
                   </div>
-                  <div className="bg-white p-4 rounded-lg shadow-sm">
-                    <div className="grid grid-cols-3 gap-2">
-                      <div className="h-8 bg-green-200 rounded"></div>
-                      <div className="h-8 bg-blue-200 rounded"></div>
-                      <div className="h-8 bg-purple-200 rounded"></div>
+                  <div className="flex items-center gap-4 p-4 rounded-lg bg-background/50 border border-white/5">
+                    <Code className="w-6 h-6 text-emerald-500" />
+                    <div className="flex-1 space-y-2">
+                      <div className="h-2 w-full bg-emerald-500/20 rounded-full"></div>
+                      <div className="h-2 w-1/2 bg-emerald-500/20 rounded-full"></div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </GlassCard>
             </div>
           </div>
-        </section>
+        </motion.section>
 
-
-        <section className="bg-white rounded-2xl shadow-2xl p-8 py-20 lg:p-12 lg:py-25">
+        {/* Professional Services */}
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="lg:order-2">
-              <h2 className="text-4xl md:text-6xl font-medium text-[#343a40] mb-6">Professional Services</h2>
-              <p className="text-gray-700 mb-8 leading-relaxed">
-                Standing out from talent can be like finding a gem in the desert! If you think about 
-                developing new or consulting us on how to help you with our development and consulting services 
-                also that, we are more than capable of providing complete and comprehensive services to let.
+            <div className="lg:order-2 space-y-6">
+              <div className="w-12 h-12 rounded-lg bg-orange-500/20 flex items-center justify-center">
+                <Users className="w-6 h-6 text-orange-500" />
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold">Professional Services</h2>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Standing out in the talent market can be challenging. Whether you are
+                developing new products or need consulting on how to optimize your current processes,
+                we are more than capable of providing comprehensive services to meet your needs.
               </p>
-            <Link
-            href='/professional-services'>
-             <button className="bg-[#154fa1] text-white px-3 py-1 md:px-6 md:py-3 rounded-lg font-light md:font-medium text-lg md:text-xl md:tracking-wide transition-colors">
-                Learn more
-              </button>
-            </Link>
+              <Button variant="outline" className="group" asChild>
+                <Link href='/professional-services'>
+                  Learn more <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
             </div>
             <div className="lg:order-1 relative">
-              <div className="bg-gradient-to-br from-gray-50 to-blue-50 p-8 rounded-2xl">
-                <div className="space-y-4">
-                  <div className="bg-white p-4 rounded-lg shadow-sm">
-                    <Users className="h-12 w-12 text-blue-600 mb-2" />
-                    <div className="text-sm font-medium">Expert Consultants</div>
+              <GlassCard className="p-8 bg-gradient-to-br from-orange-500/5 to-amber-500/5 border-orange-500/10">
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="text-center p-4">
+                    <div className="text-4xl font-bold text-orange-500 mb-2">50+</div>
+                    <div className="text-sm text-muted-foreground">Experts</div>
                   </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white p-3 rounded-lg shadow-sm">
-                      <div className="h-8 w-8 bg-green-500 rounded mb-2"></div>
-                      <div className="text-xs">Development</div>
-                    </div>
-                    <div className="bg-white p-3 rounded-lg shadow-sm">
-                      <div className="h-8 w-8 bg-purple-500 rounded mb-2"></div>
-                      <div className="text-xs">Consulting</div>
-                    </div>
+                  <div className="text-center p-4">
+                    <div className="text-4xl font-bold text-amber-500 mb-2">100%</div>
+                    <div className="text-sm text-muted-foreground">Satisfaction</div>
+                  </div>
+                  <div className="text-center p-4 col-span-2">
+                    <div className="text-4xl font-bold text-foreground mb-2">24/7</div>
+                    <div className="text-sm text-muted-foreground">Support & Maintenance</div>
                   </div>
                 </div>
-              </div>
+              </GlassCard>
             </div>
           </div>
-        </section>
+        </motion.section>
       </div>
 
-        <PageCarrerSection/>
-        <Footer/>
+      <Footer />
     </div>
   );
 };
