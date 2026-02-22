@@ -93,7 +93,7 @@ export default function NavigationBar() {
     <header
       className={cn(
         "fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent",
-        scrolled ? "glass border-white/10 py-3" : "bg-transparent py-5"
+        scrolled ? "glass border-white/10" : "bg-transparent"
       )}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
@@ -130,7 +130,7 @@ export default function NavigationBar() {
                                 >
                                   <div className="flex items-center gap-3">
                                     {link.type === "icon" && "icon" in item && (
-                                      <div className="p-2 rounded-md bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                                      <div className="p-2 rounded-md bg-white text-primary shadow-sm border border-transparent group-hover:border-primary/10 group-hover:[&>svg]:stroke-[3px] transition-all">
                                         {item.icon === "Database" && <Database size={18} />}
                                         {item.icon === "CloudUpload" && <CloudUpload size={18} />}
                                         {item.icon === "Boxes" && <Boxes size={18} />}
@@ -156,11 +156,14 @@ export default function NavigationBar() {
                       </NavigationMenuContent>
                     </>
                   ) : (
-                    <Link href={link.href} legacyBehavior passHref>
-                      <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-base font-medium text-muted-foreground transition-colors hover:bg-transparent hover:text-primary focus:bg-transparent focus:text-primary focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-transparent/50 data-[state=open]:bg-transparent/50">
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href={link.href}
+                        className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-base font-medium text-muted-foreground transition-colors hover:bg-transparent hover:text-primary focus:bg-transparent focus:text-primary focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-transparent/50 data-[state=open]:bg-transparent/50"
+                      >
                         {link.label}
-                      </NavigationMenuLink>
-                    </Link>
+                      </Link>
+                    </NavigationMenuLink>
                   )}
                 </NavigationMenuItem>
               ))}
@@ -180,7 +183,7 @@ export default function NavigationBar() {
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="ghost" size="icon" className="text-foreground">
-                <Menu className="h-6 w-6" />
+                <Menu className="h-3 w-6" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </PopoverTrigger>

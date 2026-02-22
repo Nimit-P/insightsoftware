@@ -1,52 +1,38 @@
 "use client";
 
 import { GlassCard } from "@/components/ui/glass-card";
-import { ArrowRight, Code, Globe, Bot, Layout, ShoppingCart, Headset } from "lucide-react";
+import { ArrowRight, Database, CloudUpload, Boxes, Users } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
 const services = [
   {
-    title: "Custom Software Development",
-    description: "Tailored software solutions built to address your unique business challenges and scale with your growth.",
-    icon: Code,
+    title: "Data Asset Modernization",
+    description: "Build a next-gen powerful data asset to offer a robust and faster tomorrow.",
+    icon: Database,
     gradient: "from-blue-500 to-cyan-500",
-    href: "/services/custom-software"
+    href: "/data-asset-modernization"
   },
   {
-    title: "Web Development",
-    description: "High-performance, responsive websites and web applications designed to engage users and drive conversions.",
-    icon: Globe,
+    title: "Cloud Migration",
+    description: "Create the perfect cloud strategy blending our rich experience with the latest technology.",
+    icon: CloudUpload,
     gradient: "from-purple-500 to-pink-500",
-    href: "/services/web-development"
+    href: "/cloud-migration"
   },
   {
-    title: "AI Solutions",
-    description: "Leverage the power of artificial intelligence and machine learning to automate processes and gain predictive insights.",
-    icon: Bot,
+    title: "Application Modernization",
+    description: "Migrate your applications to an ethical and standards-based environment seamlessly.",
+    icon: Boxes,
     gradient: "from-amber-500 to-orange-500",
-    href: "/services/ai-solutions"
+    href: "/application-modernization"
   },
   {
-    title: "UI/UX Design",
-    description: "User-centric design that creates intuitive, engaging, and beautiful digital experiences for your customers.",
-    icon: Layout,
+    title: "Professional Services",
+    description: "Flexible partnership models to recruit the perfect individuals for your organization.",
+    icon: Users,
     gradient: "from-green-500 to-emerald-500",
-    href: "/services/ui-ux"
-  },
-  {
-    title: "E-commerce Development",
-    description: "Scalable online stores with seamless payment integration, inventory management, and superior user experience.",
-    icon: ShoppingCart,
-    gradient: "from-indigo-500 to-violet-500",
-    href: "/services/ecommerce"
-  },
-  {
-    title: "Maintenance & Support",
-    description: "Dedicated support teams ensuring your software remains secure, up-to-date, and performing at optimal levels.",
-    icon: Headset,
-    gradient: "from-rose-500 to-red-500",
-    href: "/services/support"
+    href: "/professional-services"
   }
 ];
 
@@ -88,7 +74,7 @@ const ServicesSection = () => {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <motion.div
               key={index}
