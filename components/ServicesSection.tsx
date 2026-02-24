@@ -1,114 +1,110 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight } from "lucide-react";
-import dataIcon from "@/assets/data-modernization-icon.png";
-import cloudIcon from "@/assets/cloud-migration-icon.png";
-import appIcon from "@/assets/app-modernization-icon.png";
-import servicesIcon from "@/assets/professional-services-icon.png";
-import Image from "next/image";
+"use client";
+
+import { GlassCard } from "@/components/ui/glass-card";
+import { ArrowRight, Database, CloudUpload, Boxes, Users } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
+
+const services = [
+  {
+    title: "Data Asset Modernization",
+    description: "Build a next-gen powerful data asset to offer a robust and faster tomorrow.",
+    icon: Database,
+    gradient: "from-blue-500 to-cyan-500",
+    href: "/data-asset-modernization"
+  },
+  {
+    title: "Cloud Migration",
+    description: "Create the perfect cloud strategy blending our rich experience with the latest technology.",
+    icon: CloudUpload,
+    gradient: "from-purple-500 to-pink-500",
+    href: "/cloud-migration"
+  },
+  {
+    title: "Application Modernization",
+    description: "Migrate your applications to an ethical and standards-based environment seamlessly.",
+    icon: Boxes,
+    gradient: "from-amber-500 to-orange-500",
+    href: "/application-modernization"
+  },
+  {
+    title: "Professional Services",
+    description: "Flexible partnership models to recruit the perfect individuals for your organization.",
+    icon: Users,
+    gradient: "from-green-500 to-emerald-500",
+    href: "/professional-services"
+  }
+];
 
 const ServicesSection = () => {
-  const services = [
-    {
-      id: "data-modernization",
-      title: "Data Asset Modernization",
-      description: "Transform your data infrastructure with modern analytics platforms, AI-driven insights, and scalable data architectures that unlock business value.",
-      icon: dataIcon,
-      features: ["Data Migration", "Analytics Platforms", "AI Integration", "Real-time Processing"],
-      href : '/data-asset-modernization'
-    },
-    {
-      id: "cloud-migration",
-      title: "Cloud Migration",
-      description: "Seamlessly transition to cloud platforms with our proven methodologies, ensuring minimal downtime and maximum performance optimization.",
-      icon: cloudIcon,
-      features: ["AWS/Azure/GCP", "Zero-Downtime Migration", "Cost Optimization", "Security First"],
-       href : '/cloud-migration'
-    },
-    {
-      id: "app-modernization",
-      title: "Application Modernization",
-      description: "Modernize legacy applications with microservices, containerization, and cloud-native architectures for enhanced scalability and performance.",
-      icon: appIcon,
-      features: ["Microservices", "Containerization", "DevOps Integration", "Performance Tuning"],
-       href : '/application-modernization'
-    },
-    {
-      id: "professional-services",
-      title: "Professional Services",
-      description: "Expert consulting and staffing solutions to accelerate your digital transformation journey with the right talent and strategic guidance.",
-      icon: servicesIcon,
-      features: ["IT Consulting", "Staff Augmentation", "Project Management", "Strategic Planning"],
-       href : '/professional-services'
-    }
-  ];
-
   return (
-    <section id="services" className="py-20 bg-gradient-subtle">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Our Core Services
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            We deliver comprehensive technology solutions that drive innovation, 
-            efficiency, and growth for organizations of all sizes.
-          </p>
+    <section id="services" className="py-24 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-blue-500/5 rounded-full blur-3xl -z-10"></div>
+
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center mb-16 space-y-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium"
+          >
+            Our Expertise
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl md:text-5xl font-bold"
+          >
+            Comprehensive <span className="text-gradient">Tech Solutions</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-muted-foreground max-w-2xl mx-auto text-lg"
+          >
+            We combine technical expertise with creative innovation to deliver products that transform businesses.
+          </motion.p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           {services.map((service, index) => (
-            <Card 
-              key={service.id} 
-              className="group hover:shadow-strong transition-all duration-300 hover:-translate-y-2 border-border bg-card"
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <CardHeader className="text-center pb-6">
-                <div className="mx-auto mb-6 w-20 h-20 flex items-center justify-center">
-                  <Image 
-                    src={service.icon} 
-                    alt={service.title}
-                    className="w-16 h-16 object-contain group-hover:scale-110 transition-transform duration-300 rounded-lg"
-                  />
-                </div>
-                <CardTitle className="text-2xl font-bold text-foreground mb-3">
-                  {service.title}
-                </CardTitle>
-                <CardDescription className="text-muted-foreground text-base leading-relaxed">
-                  {service.description}
-                </CardDescription>
-              </CardHeader>
-              
-              <CardContent className="pt-0">
-                <div className="mb-6">
-                  <h4 className="font-semibold text-foreground mb-3">Key Capabilities:</h4>
-                  <div className="grid grid-cols-2 gap-2">
-                    {service.features.map((feature) => (
-                      <div key={feature} className="flex items-center text-sm text-muted-foreground">
-                        <div className="w-2 h-2 bg-accent rounded-full mr-2"></div>
-                        {feature}
-                      </div>
-                    ))}
+              <GlassCard className="h-full group hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 relative overflow-hidden">
+                <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${service.gradient} opacity-10 blur-2xl rounded-bl-full transition-opacity group-hover:opacity-20`}></div>
+
+                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.gradient} p-0.5 mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className="w-full h-full bg-background/90 backdrop-blur-sm rounded-[14px] flex items-center justify-center">
+                    <service.icon className="w-7 h-7 text-foreground" />
                   </div>
                 </div>
-                
-                <Link
-                 href={service.href}>
-                <Button 
-                  variant="outline" 
-                  className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300"
-                >
+
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{service.title}</h3>
+                <p className="text-muted-foreground mb-6 line-clamp-3">
+                  {service.description}
+                </p>
+
+                <Link href={service.href} className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors group/link">
                   Learn More
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </Button>
-              </Link>
-              </CardContent>
-            </Card>
+                  <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                </Link>
+              </GlassCard>
+            </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );

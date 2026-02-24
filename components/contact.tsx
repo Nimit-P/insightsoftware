@@ -1,94 +1,141 @@
+"use client";
+
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Card } from '@/components/ui/card'
+import { GlassCard } from '@/components/ui/glass-card'
+import Footer from '@/components/Footer'
+import { Mail, MapPin, Phone } from 'lucide-react'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 export default function ContactSection() {
     return (
-        <section className="py-32">
-            <div className="mx-auto max-w-3xl px-8 lg:px-0">
-                <h1 className="text-center text-4xl font-semibold lg:text-5xl">Contact Insightsoftware</h1>
-                <p className="mt-4 text-center">We'll help you find the right plan and pricing for your business.</p>
+        <div className="min-h-screen pt-16 bg-background overflow-hidden relative">
+            {/* Background Decorations */}
+            <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+            <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-blue-500/5 rounded-full blur-3xl -z-10"></div>
 
-                <Card className="mx-auto mt-12 max-w-lg p-8 shadow-md sm:p-16">
-                    <div>
-                        <h2 className="text-xl font-semibold">Let's get you to the right place</h2>
-                        <p className="mt-4 text-sm">Reach out to our sales team! We’re eager to learn more about how you plan to use our application.</p>
-                    </div>
-
-                    <form
-                        action=""
-                        className="**:[&>label]:block mt-12 space-y-6 *:space-y-3">
+            <section className="py-20 lg:py-32 container mx-auto px-4 md:px-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+                    {/* Left Content */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="space-y-8"
+                    >
                         <div>
-                            <Label htmlFor="name">Full name</Label>
-                            <Input
-                                type="text"
-                                id="name"
-                                required
-                            />
+                            <h1 className="text-4xl lg:text-6xl font-bold mb-6">Contact <br /><span className="text-gradient">Insightsoftware</span></h1>
+                            <p className="text-lg text-muted-foreground leading-relaxed">
+                                Ready to transform your business with AI and modern software? We're here to help you find the right plan and solution for your needs.
+                            </p>
                         </div>
 
-                        <div>
-                            <Label htmlFor="email">Work Email</Label>
-                            <Input
-                                type="email"
-                                id="email"
-                                required
-                            />
+                        <div className="space-y-6">
+                            <GlassCard className="p-6 md:p-8 space-y-6">
+                                <h2 className="text-xl font-bold">Get in touch directly</h2>
+                                <div className="space-y-4">
+                                    <div className="flex items-start gap-4">
+                                        <Mail className="w-5 h-5 text-primary mt-1" />
+                                        <div>
+                                            <div className="font-medium">Email Us</div>
+                                            <Link href="mailto:info@insightsoftware.digital" className="text-sm text-muted-foreground hover:text-primary">info@insightsoftware.digital</Link>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-4">
+                                        <Phone className="w-5 h-5 text-primary mt-1" />
+                                        <div>
+                                            <div className="font-medium">Call Us</div>
+                                            <Link href="tel:+1 978-885-2439" className="text-sm text-muted-foreground hover:text-primary">+1 978-885-2439</Link>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-4">
+                                        <MapPin className="w-5 h-5 text-primary mt-1" />
+                                        <div>
+                                            <div className="font-medium">Visit Us</div>
+                                            <p className="text-sm text-muted-foreground">Global Headquarters Corporate Center: 1601 Bond St #205 Naperville, IL 60563</p>
+                                            <p className="text-sm text-muted-foreground">Corporate Annexe: 8th Floor, #802, Sonawala Lane, Goregoan East, Mumbai 400063</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </GlassCard>
                         </div>
+                    </motion.div>
 
-                        <div>
-                            <Label htmlFor="country">Country/Region</Label>
-                            <Select>
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Select Country/Region" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem value="1">DR Congo</SelectItem>
-                                    <SelectItem value="2">United States</SelectItem>
-                                    <SelectItem value="3">France</SelectItem>
-                                </SelectContent>
-                            </Select>
-                        </div>
+                    {/* Right Content - Form */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                    >
+                        <GlassCard className="p-8 shadow-2xl border-primary/10">
+                            <div>
+                                <h2 className="text-2xl font-bold mb-2">Send us a message</h2>
+                                <p className="text-sm text-muted-foreground mb-8">Reach out to our sales team about your project.</p>
+                            </div>
 
-                        <div>
-                            <Label htmlFor="website">Company Website</Label>
-                            <Input
-                                type="url"
-                                id="website"
-                            />
-                            <span className="text-muted-foreground inline-block text-sm">Must start with 'https'</span>
-                        </div>
+                            <form className="space-y-6">
+                                <div className="space-y-2">
+                                    <Label htmlFor="name">Full Name</Label>
+                                    <Input id="name" placeholder="John Doe" required className="bg-background/50 border-input/50 focus:border-primary" />
+                                </div>
 
-                        <div>
-                            <Label htmlFor="job">Job function</Label>
-                            <Select>
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Select Job Function" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem value="1">Finance</SelectItem>
-                                    <SelectItem value="2">Education</SelectItem>
-                                    <SelectItem value="3">Legal</SelectItem>
-                                    <SelectItem value="4">More</SelectItem>
-                                </SelectContent>
-                            </Select>
-                        </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="email">Work Email</Label>
+                                    <Input id="email" type="email" placeholder="john@company.com" required className="bg-background/50 border-input/50 focus:border-primary" />
+                                </div>
 
-                        <div>
-                            <Label htmlFor="msg">Message</Label>
-                            <Textarea
-                                id="msg"
-                                rows={3}
-                            />
-                        </div>
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div className="space-y-2">
+                                        <Label htmlFor="country">Country</Label>
+                                        <Select>
+                                            <SelectTrigger className="bg-background/50 border-input/50">
+                                                <SelectValue placeholder="Select" />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectItem value="us">United States</SelectItem>
+                                                <SelectItem value="uk">United Kingdom</SelectItem>
+                                                <SelectItem value="ca">Canada</SelectItem>
+                                                <SelectItem value="other">Other</SelectItem>
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="job">Job Function</Label>
+                                        <Select>
+                                            <SelectTrigger className="bg-background/50 border-input/50">
+                                                <SelectValue placeholder="Select" />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectItem value="engineering">Engineering</SelectItem>
+                                                <SelectItem value="product">Product</SelectItem>
+                                                <SelectItem value="executive">Executive</SelectItem>
+                                                <SelectItem value="other">Other</SelectItem>
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
+                                </div>
 
-                        <Button>Submit</Button>
-                    </form>
-                </Card>
-            </div>
-        </section>
+                                <div className="space-y-2">
+                                    <Label htmlFor="website">Company Website</Label>
+                                    <Input id="website" type="url" placeholder="https://example.com" className="bg-background/50 border-input/50 focus:border-primary" />
+                                </div>
+
+                                <div className="space-y-2">
+                                    <Label htmlFor="msg">Message</Label>
+                                    <Textarea id="msg" rows={4} placeholder="Tell us about your project..." className="bg-background/50 border-input/50 focus:border-primary resize-none" />
+                                </div>
+
+                                <Button type="submit" size="lg" className="w-full" variant="glow">Submit Request</Button>
+                            </form>
+                        </GlassCard>
+                    </motion.div>
+                </div>
+            </section>
+            <Footer />
+        </div>
     )
 }

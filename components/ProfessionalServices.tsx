@@ -1,144 +1,149 @@
+"use client";
 
-import { Cloud, Server, Database, Shield, ArrowRight, Target, Award, Clock, Users } from 'lucide-react';
-import PageCarrerSection from './PageCarrerSection';
-import Footer from './Footer';
+import React from 'react';
+import { Users, Clock, Award, Target, CheckCircle, ArrowRight } from 'lucide-react';
+import Footer from '@/components/Footer';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { GlassCard } from '@/components/ui/glass-card';
+import { motion } from 'framer-motion';
 
 const ProfessionalServices = () => {
   return (
-    <div className="min-h-screen bg-gray-50 mt-18">
+    <div className="min-h-screen bg-background pt-16 overflow-hidden">
 
-      <section className="bg-[#753a88] text-white py-40">
-        <div className="max-w-8xl w-[95%] mx-auto px-4 sm:px-6 lg:px-8  p-2">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center p-4">
-            <div className=' col-span-2'>
-              <h1 className="text-4xl lg:text-5xl font-medium mb-6">
-                Professional Services
+      {/* Hero Section */}
+      <section className="relative py-20 lg:py-32">
+        <div className="absolute inset-0 bg-primary/5 -skew-y-2 transform origin-top-left scale-110"></div>
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+                Professional <br /> <span className="text-gradient">Services</span>
               </h1>
-              <p className="text-base text-purple-100 leading-relaxed">
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 With flexible partnership models, recruiting the perfect individuals for you is a cakewalk for us!
               </p>
-            </div>
-            <div className="relative flex justify-center">
-              <div className="relative  col-span-1">
+              <Button size="lg" variant="glow" asChild>
+                <Link href='/contact'>Build Your Team</Link>
+              </Button>
+            </motion.div>
 
-                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg transform rotate-12">
-                  <div className="w-32 h-20 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center">
-                    <div className="text-white text-xs">Cloud Platform</div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative flex justify-center"
+            >
+              <GlassCard className="p-12 relative bg-white/5 border-white/10 flex items-center justify-center">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-blue-500 blur-3xl opacity-20 animate-pulse"></div>
+                  <Users className="w-40 h-40 text-blue-500 relative z-10" />
+
+                  {/* Floating Elements */}
+                  <div className="absolute -top-4 -right-8 bg-background p-2 rounded-lg shadow-lg animate-bounce">
+                    <Award className="w-6 h-6 text-purple-500" />
                   </div>
-                  <div className="w-36 h-2 bg-white/20 rounded-full mx-auto mt-2"></div>
-                </div>
-                
-
-                <div className="absolute -left-16 top-8 bg-white/10 backdrop-blur-sm p-3 rounded-lg transform -rotate-12">
-                  <div className="w-12 h-20 bg-gradient-to-br from-purple-400 to-purple-600 rounded-md flex flex-col justify-between p-2">
-                    <div className="w-full h-1 bg-white/30 rounded"></div>
-                    <div className="space-y-1">
-                      <div className="w-full h-1 bg-white/50 rounded"></div>
-                      <div className="w-3/4 h-1 bg-white/50 rounded"></div>
-                      <div className="w-1/2 h-1 bg-white/50 rounded"></div>
-                    </div>
-                    <div className="w-6 h-1 bg-white/30 rounded mx-auto"></div>
+                  <div className="absolute -bottom-4 -left-8 bg-background p-2 rounded-lg shadow-lg animate-bounce delay-150">
+                    <Target className="w-6 h-6 text-green-500" />
                   </div>
                 </div>
+              </GlassCard>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
-
-                <div className="absolute -top-8 -right-8">
-                  <Cloud className="h-16 w-16 text-white/30" />
+      {/* Content Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <GlassCard className="p-8 md:p-12 space-y-8">
+              <h2 className="text-3xl font-bold">Empower Your Organization</h2>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div className="space-y-6 text-muted-foreground leading-relaxed">
+                  <p>
+                    The demand for skilled IT labor has multiplied rapidly over the years. Staffing demands continue to change at an accelerated pace. It is difficult for any company to keep up with the ever-evolving staffing demand.
+                  </p>
+                  <p>
+                    This is where professional IT staffing solutions come into the picture. Many employers are turning towards IT staffing solution providers as the process is time-consuming and complex for them.
+                  </p>
+                  <p>
+                    When you, as an employer, hire through an IT staffing company, be assured about the candidates. You pay them for the skills that are required and it also reduces the chances of a ‘bad hire’, eventually leading to high savings.
+                  </p>
                 </div>
-                <div className="absolute -bottom-4 -left-8">
-                  <Cloud className="h-12 w-12 text-white/20" />
-                </div>
-
-                <div className="absolute top-12 -right-12">
-                  <div className="flex items-center space-x-2 text-white/60">
-                    <div className="w-8 h-0.5 bg-white/60"></div>
-                    <ArrowRight className="h-4 w-4" />
-                  </div>
+                <div className="space-y-6">
+                  <h3 className="text-xl font-semibold">Why Choose Insightsoftware?</h3>
+                  <ul className="space-y-4">
+                    {[
+                      "Access to a vast pool of talented individuals",
+                      "Systematic approach for candidate selection",
+                      "Reduce hiring risks and save on operational costs",
+                      "Flexible partnership models tailored for you",
+                      "Fill in the void of IT support staffing specialists"
+                    ].map((item, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-primary mt-1 shrink-0" />
+                        <span className="text-muted-foreground">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button variant="outline" asChild className="mt-4">
+                    <Link href="/contact">Consult with Experts</Link>
+                  </Button>
                 </div>
               </div>
-            </div>
+            </GlassCard>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-20 bg-accent/5">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Professional Services Benefits</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Expert consulting and development services to accelerate your digital transformation
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: Users, title: "Expert Team", desc: "Skilled professionals with industry expertise", color: "text-blue-500", bg: "bg-blue-500/10" },
+              { icon: Clock, title: "Time Efficient", desc: "Faster project delivery with proven methodologies", color: "text-green-500", bg: "bg-green-500/10" },
+              { icon: Award, title: "Quality Assured", desc: "High-quality deliverables with rigorous testing", color: "text-purple-500", bg: "bg-purple-500/10" },
+              { icon: Target, title: "Targeted Solutions", desc: "Customized solutions aligned with business goals", color: "text-orange-500", bg: "bg-orange-500/10" }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <GlassCard className="h-full text-center hover:border-primary/50 transition-colors p-6">
+                  <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${item.bg}`}>
+                    <item.icon className={`h-8 w-8 ${item.color}`} />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground">{item.desc}</p>
+                </GlassCard>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="py-5 relative bottom-20">
-        <div className="max-w-8xl w-full md:w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-2xl p-5 px-7 md:p-10 md:px-15 lg:p-18 lg:px-20">
-            <div className="prose max-w-none">
-              <p className="text-[#343a40] text-base leading-relaxed mb-4">
-               The demand for skilled IT labor has multiplied rapidly over the years. Staffing demands continue to change at an accelerated pace. It is difficult for any company to keep up with the ever-evolving staffing demand. This is where professional IT staffing solutions come into the picture. Many employers are turning towards IT staffing solution providers as the process is time-consuming and complex for them. IT support staffing specialists like Strong Point consulting can fill in the void of talented individuals. This factor can help in meeting your long-term goals.
-              </p>
-              
-              <p className="text-[#343a40] text-base leading-relaxed mb-4 font-semibold">
-               Why choose IT staffing services?
-              </p>
-              
-              <p className="text-[#343a40] text-base leading-relaxed mb-4">
-                When you, as an employer, hire through an IT staffing company, be rest assured about the candidates. You pay them for the skills that are required and it also reduces the chances of a ‘bad hire’, eventually leading to high savings.
-              </p>
-              
-              <h3 className="text-base  text-[#343a40] mb-3">
-                Strong Point Consulting has the best pool of talented individuals who can prove to be an asset to your organization. We have a systematic approach for selecting and recruiting candidates who can help in adding value to your organization!
-              </h3>
-              
-              <Link href='/contact'>
-              <button className="bg-[#753a88] text-white px-6 py-3 rounded-lg text-lg transition-colors">
-                Have a question?
-              </button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-     <section className="bg-gray-100 py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Professional Services Benefits</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Expert consulting and development services to accelerate your digital transformation
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="bg-white p-6 rounded-xl shadow-sm text-center">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Users className="h-8 w-8 text-blue-600" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Expert Team</h3>
-            <p className="text-gray-600 text-sm">Skilled professionals with industry expertise</p>
-          </div>
-          
-          <div className="bg-white p-6 rounded-xl shadow-sm text-center">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Clock className="h-8 w-8 text-green-600" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Time Efficient</h3>
-            <p className="text-gray-600 text-sm">Faster project delivery with proven methodologies</p>
-          </div>
-          
-          <div className="bg-white p-6 rounded-xl shadow-sm text-center">
-            <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Award className="h-8 w-8 text-purple-600" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Quality Assured</h3>
-            <p className="text-gray-600 text-sm">High-quality deliverables with rigorous testing</p>
-          </div>
-          
-          <div className="bg-white p-6 rounded-xl shadow-sm text-center">
-            <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Target className="h-8 w-8 text-orange-600" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Targeted Solutions</h3>
-            <p className="text-gray-600 text-sm">Customized solutions aligned with business goals</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-        <PageCarrerSection/>
-        <Footer/>
+      <Footer />
     </div>
   );
 };

@@ -1,154 +1,126 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
-import { Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import Logo from "@/components/logo"; // Assuming Logo component exists and adapts to color
+import { Linkedin, Mail, Twitter, Github, MapPin, Phone } from "lucide-react";
+import Link from "next/link";
+import { GlassCard } from "@/components/ui/glass-card";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
     services: [
-      { name: "Data Asset Modernization", href: "/data-asset-modernization" },
-      { name: "Cloud Migration", href: "/cloud-migration" },
-      { name: "Application Modernization", href: "/application-modernization" },
-      { name: "Professional Services", href: "/professional-services" }
+      { name: "Custom Software", href: "/services/custom-software" },
+      { name: "Web Development", href: "/services/web-development" },
+      { name: "AI Solutions", href: "/services/ai-solutions" },
+      { name: "UI/UX Design", href: "/services/ui-ux" },
     ],
-    company: [
-      { name: "About Us", href: "/about-us" },
-      { name: "Our Team", href: "#team" },
+    resources: [
+      { name: "Case Studies", href: "/case-studies" },
+      { name: "Blog", href: "/blog" },
+      { name: "Whitepapers", href: "/resources/whitepapers" },
       { name: "Careers", href: "/careers" },
+    ],
+    contact: [
+      { icon: Mail, text: "info@insightsoftware.digital", href: "mailto:info@insightsoftware.digital" },
+      { icon: Phone, text: "+1 978-885-2439", href: "tel:+15551234567" },
+      { icon: MapPin, text: "Global Headquarters Corporate Center: 1601 Bond St #205 Naperville, IL 60563", href: "#" },
+      { icon: MapPin, text: "Corporate Annexe: 8th Floor, #802, Sonawala Lane, Goregoan East, Mumbai 400063", href: "#" }
     ]
   };
 
   return (
-    <footer className="bg-primary text-primary-foreground">
-      {/* Contact CTA Section */}
-      <div className="border-b border-primary-light/20">
-        <div className="container mx-auto px-4 py-16">
-          <div className="text-center max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to Transform Your Business?
-            </h2>
-            <p className="text-xl text-primary-foreground/90 mb-8 leading-relaxed">
-              Let's discuss how we can help you modernize your technology infrastructure
-              and accelerate your digital transformation journey.
+    <footer className="bg-background border-t border-white/10 relative overflow-hidden pt-20 pb-10">
+      {/* Subtle Top Gradient Line */}
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+
+      {/* Background Glow */}
+      <div className="absolute bottom-0 left-1/4 w-1/2 h-1/2 bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+
+          {/* Column 1: Company */}
+          <div className="space-y-6">
+            <Link href="/" className="inline-block">
+              <Logo />
+            </Link>
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
+              Building the future of digital products with intelligence, precision, and world-class design.
             </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Footer */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-          {/* Company Info */}
-          <div className="lg:col-span-3">
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold mb-4">Insight Software</h3>
-              <p className="text-primary-foreground/80 leading-relaxed mb-6">
-                Innovating through people, process, and technology. We empower organizations
-                to modernize their digital infrastructure and build solutions that drive real business value.
-              </p>
-            </div>
-
-            {/* Contact Info */}
-            <div className="space-y-3 mb-6 ">
-              <div className="flex items-center text-primary-foreground/80">
-                <Phone className="h-4 w-4 mr-3" />
-                <span>+1 978-885-2439</span>
-              </div>
-              <div className="flex items-center text-primary-foreground/80">
-                <Mail className="h-4 w-4 mr-3" />
-                <span>info@insightsoftware.digital</span>
-              </div>
-              <div className="flex items-start text-primary-foreground/80">
-                <MapPin className="w-10 mr-3 " />
-                <span>Global Headquarters
-                  Corporate Center: 1601 Bond St #205 Naperville, IL 60563<br></br>
-                  Corporate Annexe: 8th Floor, #802, Sonawala Lane, Goregoan East, Mumbai 400063</span>
-              </div>
-            </div>
-
-            {/* Social Links */}
-            <div className="flex gap-3">
-              <Button
-                variant="default"
-                size="sm"
-                className="p-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
-              >
-                <Linkedin className="h-4 w-4" />
-              </Button>
-              <Button
-                variant="default"
-                size="sm"
-                className="p-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
-              >
-                <Mail className="h-4 w-4" />
-              </Button>
+            <div className="flex gap-4">
+              {[Linkedin, Twitter, Github, Mail].map((Icon, i) => (
+                <Link
+                  key={i}
+                  href="#"
+                  className="p-2 rounded-full bg-white/5 hover:bg-primary/20 hover:text-primary transition-all duration-300 hover:shadow-[0_0_15px_-3px_var(--color-primary)]"
+                >
+                  <Icon size={18} />
+                </Link>
+              ))}
             </div>
           </div>
 
-          {/* Services Links */}
+          {/* Column 2: Services */}
           <div>
-            <h4 className="font-semibold mb-4">Services</h4>
-            <ul className="space-y-2">
+            <h4 className="font-bold text-foreground mb-6">Services</h4>
+            <ul className="space-y-4">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
-                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors duration-200"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center group"
                   >
+                    <span className="w-0 group-hover:w-2 transition-all duration-300 h-[1px] bg-primary mr-0 group-hover:mr-2"></span>
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Company Links */}
+          {/* Column 3: Resources */}
           <div>
-            <h4 className="font-semibold mb-4">Company</h4>
-            <ul className="space-y-2">
-              {footerLinks.company.map((link) => (
+            <h4 className="font-bold text-foreground mb-6">Resources</h4>
+            <ul className="space-y-4">
+              {footerLinks.resources.map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
-                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors duration-200"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center group"
                   >
+                    <span className="w-0 group-hover:w-2 transition-all duration-300 h-[1px] bg-primary mr-0 group-hover:mr-2"></span>
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
+          {/* Column 4: Contact */}
+          <div>
+            <h4 className="font-bold text-foreground mb-6">Contact</h4>
+            <ul className="space-y-4">
+              {footerLinks.contact.map((item, idx) => (
+                <li key={idx} className="flex items-start gap-3 text-sm text-muted-foreground">
+                  <item.icon size={18} className="mt-0.5 text-primary" />
+                  <Link href={item.href} className="hover:text-foreground transition-colors">
+                    {item.text}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-primary-light/20">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-primary-foreground/60 text-sm mb-4 md:mb-0">
-              © {currentYear} Insightsoftware.
-            </p>
-            <div className="flex gap-6 text-sm">
-              <a
-                href="#privacy"
-                className="text-primary-foreground/60 hover:text-primary-foreground transition-colors duration-200"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="#terms"
-                className="text-primary-foreground/60 hover:text-primary-foreground transition-colors duration-200"
-              >
-                Terms of Service
-              </a>
-              <a
-                href="#cookies"
-                className="text-primary-foreground/60 hover:text-primary-foreground transition-colors duration-200"
-              >
-                Cookie Policy
-              </a>
-            </div>
+        {/* Footer Bottom */}
+        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
+          <p>&copy; {currentYear} Insightsoftware. All rights reserved.</p>
+          <div className="flex gap-8">
+            <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
+            <Link href="/cookies" className="hover:text-foreground transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>

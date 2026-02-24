@@ -1,4 +1,5 @@
-import { Database, CloudUpload, Boxes, Users } from "lucide-react";
+"use client"
+import { Database, CloudUpload, Boxes, Users, Menu, X } from "lucide-react";
 import Logo from "@/components/logo";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -16,6 +17,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const navigationLinks = [
   { href: "/", label: "Home" },
@@ -44,7 +47,7 @@ const navigationLinks = [
   },
   {
     href: "/services",
-    label: "Service",
+    label: "Services",
     submenu: true,
     type: "icon",
     items: [
@@ -75,195 +78,150 @@ const navigationLinks = [
 ];
 
 export default function NavigationBar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-background  px-4 md:px-6">
-      <div className="flex h-18 items-center justify-between gap-4 md:mx-10">
-        <div className="flex items-center justify-center gap-2 p-2 w-full">
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button
-                className="group size-8 md:hidden"
-                variant="ghost"
-                size="icon"
-              >
-                <svg
-                  className="pointer-events-none"
-                  width={16}
-                  height={16}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4 12L20 12"
-                    className="origin-center -translate-y-[7px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-x-0 group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[315deg]"
-                  />
-                  <path
-                    d="M4 12H20"
-                    className="origin-center transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.8)] group-aria-expanded:rotate-45"
-                  />
-                  <path
-                    d="M4 12H20"
-                    className="origin-center translate-y-[7px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[135deg]"
-                  />
-                </svg>
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent align="start" className="w-64 p-1 md:hidden">
-              <NavigationMenu className="max-w-none *:w-full">
-                <NavigationMenuList className="flex-col items-start gap-0 md:gap-2">
-                  {navigationLinks.map((link, index) => (
-                    <NavigationMenuItem key={index} className="w-full">
-                      {link.submenu ? (
-                        <>
-                          <div className="text-muted-foreground px-2 py-1.5 text-xs font-medium">
-                            {link.label}
-                          </div>
-                          <ul>
-                            {link.items.map((item, itemIndex) => (
-                              <li key={itemIndex}>
-                                <NavigationMenuLink
+    <header
+      className={cn(
+        "fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent",
+        scrolled ? "glass border-white/10" : "bg-transparent"
+      )}
+    >
+      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2 z-50">
+          <Logo />
+        </Link>
+
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-8">
+          <NavigationMenu viewport={false}>
+            <NavigationMenuList className="gap-1">
+              {navigationLinks.map((link, index) => (
+                <NavigationMenuItem key={index}>
+                  {link.submenu ? (
+                    <>
+                      <NavigationMenuTrigger className="bg-transparent text-base font-medium text-muted-foreground hover:text-primary data-[state=open]:text-primary transition-colors focus:bg-transparent hover:bg-transparent">
+                        <Link href={link.href ?? "#"}>{link.label}</Link>
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent className="glass border-white/10 p-2 rounded-xl animate-in fade-in zoom-in-95 duration-200">
+                        <ul
+                          className={cn(
+                            "grid gap-2",
+                            link.type === "description"
+                              ? "w-[400px] p-2 md:w-[500px] md:grid-cols-2"
+                              : "w-[300px] p-2"
+                          )}
+                        >
+                          {link.items.map((item, itemIndex) => (
+                            <li key={itemIndex}>
+                              <NavigationMenuLink asChild>
+                                <Link
                                   href={item.href}
-                                  className="py-1.5"
+                                  className="block select-none space-y-1 rounded-lg p-3 leading-none no-underline outline-none transition-colors hover:bg-accent/50 hover:text-accent-foreground focus:bg-accent/50 focus:text-accent-foreground group"
                                 >
-                                  {item.label}
-                                </NavigationMenuLink>
-                              </li>
-                            ))}
-                          </ul>
-                        </>
-                      ) : (
-                        <NavigationMenuLink href={link.href} className="py-1.5">
-                          {link.label}
-                        </NavigationMenuLink>
-                      )}
-                      {/* Add separator between different types of items */}
-                      {index < navigationLinks.length - 1 &&
-                        // Show separator if:
-                        // 1. One is submenu and one is simple link OR
-                        // 2. Both are submenus but with different types
-                        ((!link.submenu &&
-                          navigationLinks[index + 1].submenu) ||
-                          (link.submenu &&
-                            !navigationLinks[index + 1].submenu) ||
-                          (link.submenu &&
-                            navigationLinks[index + 1].submenu &&
-                            link.type !== navigationLinks[index + 1].type)) && (
-                          <div
-                            role="separator"
-                            aria-orientation="horizontal"
-                            className="bg-border -mx-1 my-1 h-px w-full"
-                          />
-                        )}
-                    </NavigationMenuItem>
-                  ))}
-                </NavigationMenuList>
-              </NavigationMenu>
-            </PopoverContent>
-          </Popover>
-          {/* Main nav */}
-          <div className="flex items-center gap-6 w-full justify-between">
-            <a href="#" className="text-primary hover:text-primary/90">
-              <Logo />
-            </a>
-            <NavigationMenu viewport={false} className="max-md:hidden">
-              <NavigationMenuList className="gap-2">
-                {navigationLinks.map((link, index) => (
-                  <NavigationMenuItem key={index}>
-                    {link.submenu ? (
-                      <>
-                        <Link href={link.href ?? "#"}>
-                          <NavigationMenuTrigger className="text-muted-foreground hover:text-primary bg-transparent px-2 py-1.5 font-medium *:[svg]:-me-0.5 *:[svg]:size-3.5">
-                            {link.label}
-                          </NavigationMenuTrigger>
-                        </Link>
-                        <NavigationMenuContent className="data-[motion=from-end]:slide-in-from-right-16! data-[motion=from-start]:slide-in-from-left-16! data-[motion=to-end]:slide-out-to-right-16! data-[motion=to-start]:slide-out-to-left-16! z-50 p-1">
-                          <ul
-                            className={cn(
-                              link.type === "description"
-                                ? "min-w-64"
-                                : "min-w-48"
-                            )}
-                          >
-                            {link.items.map((item, itemIndex) => (
-                              <li key={itemIndex}>
-                                <NavigationMenuLink
-                                  href={item.href}
-                                  className="py-1.5"
-                                >
-                                  {link.type === "icon" && "icon" in item && (
-                                    <div className="flex items-center gap-4">
-                                      {item.icon === "Database" && (
-                                        <Database
-                                          size={16}
-                                          className="text-foreground opacity-60"
-                                          aria-hidden="true"
-                                        />
-                                      )}
-                                      {item.icon === "CloudUpload" && (
-                                        <CloudUpload
-                                          size={16}
-                                          className="text-foreground opacity-60"
-                                          aria-hidden="true"
-                                        />
-                                      )}
-                                      {item.icon === "Boxes" && (
-                                        <Boxes
-                                          size={16}
-                                          className="text-foreground opacity-60"
-                                          aria-hidden="true"
-                                        />
-                                      )}
-                                      {item.icon === "Users" && (
-                                        <Users
-                                          size={16}
-                                          className="text-foreground opacity-60"
-                                          aria-hidden="true"
-                                        />
-                                      )}
-                                      <span>{item.label}</span>
-                                    </div>
-                                  )}
-                                  {link.type === "description" &&
-                                  "description" in item ? (
-                                    <div className="space-y-1">
-                                      <div className="font-medium">
+                                  <div className="flex items-center gap-3">
+                                    {link.type === "icon" && "icon" in item && (
+                                      <div className="p-2 rounded-md bg-white text-primary shadow-sm border border-transparent group-hover:border-primary/10 group-hover:[&>svg]:stroke-[3px] transition-all">
+                                        {item.icon === "Database" && <Database size={18} />}
+                                        {item.icon === "CloudUpload" && <CloudUpload size={18} />}
+                                        {item.icon === "Boxes" && <Boxes size={18} />}
+                                        {item.icon === "Users" && <Users size={18} />}
+                                      </div>
+                                    )}
+                                    <div>
+                                      <div className="text-sm font-medium leading-none group-hover:text-primary transition-colors">
                                         {item.label}
                                       </div>
-                                      <p className="text-muted-foreground line-clamp-2 text-xs">
-                                        {item.description}
-                                      </p>
+                                      {"description" in item && (
+                                        <p className="line-clamp-2 text-xs leading-snug text-muted-foreground mt-1 group-hover:text-muted-foreground/80">
+                                          {item.description}
+                                        </p>
+                                      )}
                                     </div>
-                                  ) : (
-                                    !link.type ||
-                                    (link.type !== "icon" &&
-                                      link.type !== "description" && (
-                                        <span>{item.label}</span>
-                                      ))
-                                  )}
-                                </NavigationMenuLink>
-                              </li>
-                            ))}
-                          </ul>
-                        </NavigationMenuContent>
-                      </>
-                    ) : (
-                      <NavigationMenuLink
+                                  </div>
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </NavigationMenuContent>
+                    </>
+                  ) : (
+                    <NavigationMenuLink asChild>
+                      <Link
                         href={link.href}
-                        className="text-muted-foreground hover:text-primary py-1.5 font-medium"
+                        className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-base font-medium text-muted-foreground transition-colors hover:bg-transparent hover:text-primary focus:bg-transparent focus:text-primary focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-transparent/50 data-[state=open]:bg-transparent/50"
                       >
                         {link.label}
-                      </NavigationMenuLink>
-                    )}
-                  </NavigationMenuItem>
-                ))}
-              </NavigationMenuList>
-            </NavigationMenu>
+                      </Link>
+                    </NavigationMenuLink>
+                  )}
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
+
+          <div className="flex items-center gap-4">
+            <ModeToggle />
+            <Button variant="glow" size="sm" className="hidden lg:flex" asChild>
+              <Link href="/contact">Get Started</Link>
+            </Button>
           </div>
+        </div>
+
+        {/* Mobile Nav Toggle */}
+        <div className="md:hidden">
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="ghost" size="icon" className="text-foreground">
+                <Menu className="h-3 w-6" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent align="end" className="w-[300px] glass border-white/10 p-4 mt-2 mr-2">
+              <nav className="flex flex-col gap-4">
+                {navigationLinks.map((link, index) => (
+                  <div key={index} className="flex flex-col gap-2">
+                    {link.submenu ? (
+                      <div className="space-y-2">
+                        <div className="text-sm font-medium text-muted-foreground px-2">{link.label}</div>
+                        <div className="pl-4 border-l border-white/10 space-y-1">
+                          {link.items.map((item, idx) => (
+                            <Link
+                              key={idx}
+                              href={item.href}
+                              className="block py-2 px-2 text-sm text-foreground/80 hover:text-primary hover:bg-primary/5 rounded-md transition-colors"
+                            >
+                              {item.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="block py-2 px-2 text-base font-medium text-foreground hover:text-primary hover:bg-primary/5 rounded-md transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
+                  </div>
+                ))}
+                <Button variant="glow" className="w-full mt-4" asChild>
+                  <Link href="/contact">Get Started</Link>
+                </Button>
+              </nav>
+            </PopoverContent>
+          </Popover>
         </div>
       </div>
     </header>
