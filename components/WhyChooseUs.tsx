@@ -59,13 +59,13 @@ const WhyChooseUs = () => {
                             <blockquote className="text-xl font-medium italic text-foreground/80">
                                 "Insightsoftware transformed our outdated system into a modern, AI-powered platform that doubled our efficiency in just 3 months."
                             </blockquote>
-                            <div className="mt-4 flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-full bg-gray-200"></div>
-                                <div>
-                                    <div className="font-bold text-sm">Sarah Jenkins</div>
-                                    <div className="text-xs text-muted-foreground">CTO, TechFlow Inc.</div>
-                                </div>
-                            </div>
+                            {/* <div className="mt-4 flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-full bg-gray-200"></div>
+                                    <div>
+                                        <div className="font-bold text-sm">Sarah Jenkins</div>
+                                        <div className="text-xs text-muted-foreground">CTO, TechFlow Inc.</div>
+                                    </div>
+                                </div> */}
                         </GlassCard>
                     </motion.div>
 

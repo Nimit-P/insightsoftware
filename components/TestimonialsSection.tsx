@@ -54,7 +54,7 @@ const TestimonialsSection = () => {
                                     "{t.content}"
                                 </blockquote>
                                 <div className="flex items-center gap-3">
-                                    {/* <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-blue-500"></div> */}
+                                    {/* <div className="w-10 h -10 rounded-full bg-gradient-to-br from-primary to-blue-500"></div> */}
                                     {/* <div>
                                         <div className="font-bold text-sm">{t.name}</div>
                                         <div className="text-xs text-muted-foreground">{t.role}</div>

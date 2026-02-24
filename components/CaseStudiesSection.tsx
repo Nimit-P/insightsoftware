@@ -80,7 +80,7 @@ const CaseStudiesSection = () => {
                         </motion.p>
                     </div>
                     <Button variant="outline" className="hidden md:flex" asChild>
-                        <Link href="/case-studies">
+                        <Link href="/services">
                             View All Projects <ArrowRight className="ml-2 w-4 h-4" />
                         </Link>
                     </Button>
