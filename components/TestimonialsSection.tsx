@@ -7,20 +7,20 @@ import { Star } from "lucide-react";
 
 const testimonials = [
     {
-        name: "Alex Rivera",
-        role: "CTO, FinEdge",
+        // name: "Alex Rivera",
+        // role: "CTO, FinEdge",
         content: "Insightsoftware delivered a banking platform that exceeds our wildest expectations. The AI integration works flawlessly.",
         stars: 5,
     },
     {
-        name: "Sarah Chen",
-        role: "Product Lead, HealthNov",
+        // name: "Sarah Chen",
+        // role: "Product Lead, HealthNov",
         content: "Their team understands the nuances of modern web performance. Our patient portal loads instantly and looks stunning.",
         stars: 5,
     },
     {
-        name: "James Wilson",
-        role: "Founder, EcoLogistics",
+        // name: "James Wilson",
+        // role: "Founder, EcoLogistics",
         content: "Scalable, secure, and beautiful software. They didn't just build what we asked for, they built what we needed.",
         stars: 5,
     },
@@ -54,11 +54,11 @@ const TestimonialsSection = () => {
                                     "{t.content}"
                                 </blockquote>
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-blue-500"></div>
-                                    <div>
+                                    {/* <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-blue-500"></div> */}
+                                    {/* <div>
                                         <div className="font-bold text-sm">{t.name}</div>
                                         <div className="text-xs text-muted-foreground">{t.role}</div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </GlassCard>
                         </motion.div>

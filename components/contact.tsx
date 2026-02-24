@@ -42,21 +42,22 @@ export default function ContactSection() {
                                         <Mail className="w-5 h-5 text-primary mt-1" />
                                         <div>
                                             <div className="font-medium">Email Us</div>
-                                            <Link href="mailto:hello@insightsoftware.digital" className="text-sm text-muted-foreground hover:text-primary">hello@insightsoftware.digital</Link>
+                                            <Link href="mailto:info@insightsoftware.digital" className="text-sm text-muted-foreground hover:text-primary">info@insightsoftware.digital</Link>
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-4">
                                         <Phone className="w-5 h-5 text-primary mt-1" />
                                         <div>
                                             <div className="font-medium">Call Us</div>
-                                            <Link href="tel:+15551234567" className="text-sm text-muted-foreground hover:text-primary">+1 (555) 123-4567</Link>
+                                            <Link href="tel:+1 978-885-2439" className="text-sm text-muted-foreground hover:text-primary">+1 978-885-2439</Link>
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-4">
                                         <MapPin className="w-5 h-5 text-primary mt-1" />
                                         <div>
                                             <div className="font-medium">Visit Us</div>
-                                            <p className="text-sm text-muted-foreground">San Francisco, CA</p>
+                                            <p className="text-sm text-muted-foreground">Global Headquarters Corporate Center: 1601 Bond St #205 Naperville, IL 60563</p>
+                                            <p className="text-sm text-muted-foreground">Corporate Annexe: 8th Floor, #802, Sonawala Lane, Goregoan East, Mumbai 400063</p>
                                         </div>
                                     </div>
                                 </div>

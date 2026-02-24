@@ -23,9 +23,10 @@ const Footer = () => {
       { name: "Careers", href: "/careers" },
     ],
     contact: [
-      { icon: Mail, text: "hello@insightsoftware.digital", href: "mailto:hello@insightsoftware.digital" },
-      { icon: Phone, text: "+1 (555) 123-4567", href: "tel:+15551234567" },
-      { icon: MapPin, text: "San Francisco, CA", href: "#" }
+      { icon: Mail, text: "info@insightsoftware.digital", href: "mailto:info@insightsoftware.digital" },
+      { icon: Phone, text: "+1 978-885-2439", href: "tel:+15551234567" },
+      { icon: MapPin, text: "Global Headquarters Corporate Center: 1601 Bond St #205 Naperville, IL 60563", href: "#" },
+      { icon: MapPin, text: "Corporate Annexe: 8th Floor, #802, Sonawala Lane, Goregoan East, Mumbai 400063", href: "#" }
     ]
   };
 
