@@ -11,16 +11,16 @@ const Footer = () => {
 
   const footerLinks = {
     services: [
-      { name: "Custom Software", href: "/services/custom-software" },
-      { name: "Web Development", href: "/services/web-development" },
-      { name: "AI Solutions", href: "/services/ai-solutions" },
-      { name: "UI/UX Design", href: "/services/ui-ux" },
+      { name: "Data Asset Modernization", href: "/services/data-asset-modernization" },
+      { name: "Cloud Migration", href: "/services/cloud-migration" },
+      { name: "Application Modernization", href: "/services/application-modernization" },
+      { name: "Professional Services", href: "/services/professional-services" },
     ],
     resources: [
-      { name: "Case Studies", href: "/case-studies" },
-      { name: "Blog", href: "/blog" },
-      { name: "Whitepapers", href: "/resources/whitepapers" },
+      { name: "About Us", href: "/about-us" },
+      { name: "Services", href: "/services" },
       { name: "Careers", href: "/careers" },
+      { name: "Contact Us", href: "/contact" },
     ],
     contact: [
       { icon: Mail, text: "info@insightsoftware.digital", href: "mailto:info@insightsoftware.digital" },

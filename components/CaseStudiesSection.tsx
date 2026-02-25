@@ -122,8 +122,8 @@ const CaseStudiesSection = () => {
                                     </div>
 
                                     <div className="mt-6">
-                                        <Link href="#" className="flex items-center text-sm font-semibold text-primary/80 hover:text-primary transition-colors">
-                                            Read Case Study <ArrowRight className="ml-2 w-4 h-4" />
+                                        <Link href="contact" className="flex items-center text-sm font-semibold text-primary/80 hover:text-primary transition-colors">
+                                            Know More <ArrowRight className="ml-2 w-4 h-4" />
                                         </Link>
                                     </div>
                                 </div>
